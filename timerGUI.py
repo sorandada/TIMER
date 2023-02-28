@@ -1,27 +1,25 @@
-#タイマー機能
 from tkinter import *
 from tkinter import ttk
 import tkinter as tk
 import tkinter.font as font
 from playsound import playsound
-from time import sleep
 
 app = Tk()
 frm = ttk.Frame(app, padding=10)
 frm.grid()
 
-text_sec=tk.StringVar()
+text_sec = tk.StringVar()
 text_sec.set("0")
-text_min=tk.StringVar()
+text_min = tk.StringVar()
 text_min.set("30")
 
-buff_min=tk.StringVar()
+buff_min = tk.StringVar()
 buff_min.set("30")
-buff_sec=tk.StringVar()
+buff_sec = tk.StringVar()
 buff_sec.set("0")
 
 
-def timer(i=0):#分単位の関数
+def timer(i=0):  # 分単位の関数
     for i in range(int(text_min.get())):
         for j in range(0, 60):
             if i < 10:
@@ -30,27 +28,26 @@ def timer(i=0):#分単位の関数
                 buff_min.set(str(i))
             if j < 10:
                 buff_sec.set("0" + str(j))
-                
+
             else:
                 buff_sec.set(str(j))
+
+
 def time(i=0):
     global buff_min, buff_sec
     for i in range(11):
-        if i==10:
+        if i == 10:
             print("end")
             buff_min.set("end")
         else:
             print(i)
             buff_sec.set(str(i))
-        i+=1
-        #sleep(1)
+        i += 1
         app.after(1000, time)
 
 
-text_start_stop=tk.StringVar()
+text_start_stop = tk.StringVar()
 text_start_stop.set("START")
-
-
 
 start = True
 check = True
@@ -122,20 +119,18 @@ def stop():
     buff_sec.set(str(time_sec))
     buff_min.set(str(time_min))
 
-label=tk.Label(frm, text="ENTER : ").grid(column=0, row=0)
-entry1=tk.Entry(frm,textvariable=text_min).grid(column=1, row=0)
-label_min=tk.Label(frm, text="m").grid(column=2, row=0)
-entry2=tk.Entry(frm, textvariable=text_sec).grid(column=3, row=0)
-label_sec=tk.Label(frm, text="s").grid(column=4, row=0)
 
-label=tk.Label(frm, textvariable=buff_min, font=font.Font(size=20)).grid(column=0, row=1, columnspan=2, rowspan=4)
-label=tk.Label(frm, text=":").grid(column=2, row=2)
-label=tk.Label(frm, textvariable=buff_sec, font=font.Font(size=20)).grid(column=3, row=1, columnspan=2, rowspan=5)
-button=tk.Button(frm,textvariable=text_start_stop,command=start)
+label = tk.Label(frm, text="ENTER : ").grid(column=0, row=0)
+entry1 = tk.Entry(frm, textvariable=text_min).grid(column=1, row=0)
+label_min = tk.Label(frm, text="m").grid(column=2, row=0)
+entry2 = tk.Entry(frm, textvariable=text_sec).grid(column=3, row=0)
+label_sec = tk.Label(frm, text="s").grid(column=4, row=0)
+
+label = tk.Label(frm, textvariable=buff_min, font=font.Font(size=20)).grid(column=0, row=1, columnspan=2, rowspan=4)
+label = tk.Label(frm, text=":").grid(column=2, row=2)
+label = tk.Label(frm, textvariable=buff_sec, font=font.Font(size=20)).grid(column=3, row=1, columnspan=2, rowspan=5)
+button = tk.Button(frm, textvariable=text_start_stop, command=start)
 button.grid(column=6, row=1)
-#button=tk.Button(frm, text="restart", command=restart).grid(column=6, row=2)
-button=tk.Button(frm, text="reset", command=stop).grid(column=6, row=3)
-
-
+button = tk.Button(frm, text="reset", command=stop).grid(column=6, row=3)
 
 app.mainloop()
