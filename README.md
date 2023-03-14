@@ -1,7 +1,7 @@
 # What is "BucksTimer"
 
 本アプリはカウントダウンタイマーであり、終了時間を迎えた時 ¥ellow BucksのGIOFTがアラーム音として流れる。
-BucksファンのためのWebアプリケーションである。
+BucksファンのためのGUIアプリケーションである。
 
 ![bucs.png](bucs.png)
 
